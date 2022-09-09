@@ -3,8 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var carrerasRouter = require('./routes/carreras');
-
+var carrerasRouter = require('./routes/carreras'); // ruta del controlador
+var materiasRouter = require('./routes/materias');
 
 var app = express();
 
@@ -19,7 +19,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/car', carrerasRouter);
+app.use('/car', carrerasRouter); // como accede a la api
+app.use('/mat', materiasRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
